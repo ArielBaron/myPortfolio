@@ -1,0 +1,35 @@
+﻿CREATE TABLE [dbo].[UserProjects]
+(
+    [email] NCHAR(50) NOT NULL, 
+    [progLang] NCHAR(10) NULL, 
+    [porjName] NCHAR(30) NULL, 
+    [contributors] INT NULL, 
+    [wantDesign] BIT NULL, 
+    CONSTRAINT [PK_UserProjects] PRIMARY KEY ([email])
+)
+// ADD items
+INSERT INTO [dbo].[UserProjects] 
+([email], [progLang], [projName], [description], [region], [contributors], [diffcultyRange], [wantDesign], [wantServerHosting], [wantMarketing], [wantCodeCleanup]) 
+VALUES 
+(N'user1@example.com', N'C#', N'Library Management', NULL, N'US', 2, NULL, 1, 0, 0, 1);
+
+INSERT INTO [dbo].[UserProjects] 
+([email], [progLang], [projName], [description], [region], [contributors], [diffcultyRange], [wantDesign], [wantServerHosting], [wantMarketing], [wantCodeCleanup]) 
+VALUES 
+(N'user2@example.com', N'Java', N'Weather App', N'Android app showing real-time weather.', N'Canada', NULL, 2, 1, 1, 0, 1);
+
+INSERT INTO [dbo].[UserProjects] 
+([email], [progLang], [projName], [description], [region], [contributors], [diffcultyRange], [wantDesign], [wantServerHosting], [wantMarketing], [wantCodeCleanup]) 
+VALUES 
+(N'user3@example.com', N'Python', N'Chatbot', NULL, N'UK', 1, 4, 0, 0, 1, 0);
+
+//ADD Users
+INSERT INTO [dbo].[Users] ([fav_color], [user_name], [user_age], [birth_date], [user_email], [user_password], [phone_number], [fav_fruit], [user_review], [include_email], [region]) VALUES (N'#ff0000', N'ariel                                             ', 12, N'2003-02-01', N'ariel@baron                                       ', N'baron                                                                                               ', N'09786572351    ', N'banana    ', 4, 1, N'US                  ')
+INSERT INTO [dbo].[Users] ([fav_color], [user_name], [user_age], [birth_date], [user_email], [user_password], [phone_number], [fav_fruit], [user_review], [include_email], [region]) 
+VALUES (N'#00ff00', N'john doe                                          ', 25, N'1998-07-15', N'john.doe@example.com                           ', N'pass123                                                                                            ', N'0541234567     ', N'melon     ', 8, 0, N'EU                  ');
+
+INSERT INTO [dbo].[Users] ([fav_color], [user_name], [user_age], [birth_date], [user_email], [user_password], [phone_number], [fav_fruit], [user_review], [include_email], [region]) 
+VALUES (N'#0000ff', N'sarah smith                                      ', 30, N'1994-03-22', N'sarah.smith@gmail.com                           ', N'securePass!                                                                                        ', N'0529876543     ', N'blueberry', 10, 1, N'ASIA                ');
+
+INSERT INTO [dbo].[Users] ([fav_color], [user_name], [user_age], [birth_date], [user_email], [user_password], [phone_number], [fav_fruit], [user_review], [include_email], [region]) 
+VALUES (N'#ffff00', N'mike brown                                       ', 19, N'2005-11-05', N'mike.brown@live.com                             ', N'mikePassword                                                                                        ', N'0531122334     ', N'banana    ', 6, 0, N'NA                  ');

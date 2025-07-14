@@ -1,0 +1,147 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="Portfolio.FinalProj.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Ariel Baron</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        img{
+           width: 100px;
+           height: 100px;
+        }
+
+
+        /* Add a black background color to the top navigation */
+        .topnav {
+          background-color: #333;
+          overflow: hidden;
+          display: flex; 
+          justify-content: space-between;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a, .topnav h3 {
+          float: left;
+          color: #f2f2f2;
+          padding: 10px 10px;
+          text-decoration: none;
+          font-size: 40px;
+        }
+        #logo{
+            float: right;
+        }
+        /* Change the color of links on hover */
+        .topnav a:hover {
+          background-color: gray;
+          color: black;
+        }
+        #nameDisplay {
+            font-size: 35px;
+        }
+
+
+        .leftnav {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          font-size: 60px;
+          width: 25%;
+          background-color: dimgrey;
+          position: absolute;
+          height: 1600px;
+          overflow: auto;
+        }
+
+        .leftnav li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          font-size: 30px;
+          text-decoration: none;
+        }
+
+        .leftnav li {
+          background-color: dimgrey;
+          color: beige;
+          font-size: 30px;
+        }
+        .leftnav a:hover {
+          background-color: gray;
+          color: black;
+        }
+        .leftnav a.active{
+            background-color: gray;
+            color: black;
+        }
+        #mainContent{
+          flex-grow: 1; /* Takes up the remaining space */
+          margin-left: 27%;
+        }
+        main{
+            display: flex;
+            width: 100%;
+        }
+        footer{
+            bottom: 0;
+            text-align: center;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="topnav">
+        <a href="https://github.com/ArielBaron" target="_blank" id="logo">
+            <img src="Assets/github.png" alt="My GitHub" />
+        </a>
+        <% if ((bool)Session["loggedin"]) { %>
+            <a href="Logout.aspx">
+                Welcome, <u><strong><%= Session["username"] %></strong></u>. <br />
+                logout?
+            </a>
+        
+        <% } else { %>
+            <a href="Login.aspx" id="nameDisplay">
+                Welcome, <u><strong>Guest</strong></u>. <br />
+                 login?
+            </a>
+        <% } %>
+        <%= !(bool)Session["loggedin"]? "<a href=\"Register.aspx\">Register</a>" : ""%>
+         <%= (bool)Session["loggedin"]? "<a href=\"ChangePassword.aspx\">Change Password</a>" : ""%>
+
+        <a href="AddItem.aspx">add project<br /><%=!(bool)Session["loggedin"] ? "(login only)" : ""%></a>
+        <a href="About.aspx" >About</a>
+        <a href="Contact.aspx" >Contact<br /><%=!(bool)Session["loggedin"] ? "(login only)" : ""%></a>
+        <a href="Home.aspx">Home</a>
+        <a href="Trivia.aspx">Trivia<br /><%=!(bool)Session["loggedin"] ? "(login only)" : ""%></a>
+    </nav>
+    <main>
+        <ul class="leftnav">
+            <li>My favoirate projects:</li>
+            <li><a onclick="this.style.backgroundColor = 'lightblue'" href="CalcApp.aspx">Calc</a></li>
+            <li><a href="BetterMashovLive.aspx">BetterMahovLive</a></li>
+            <li><a href="FlashCards.aspx">FlashCards</a></li>
+            <li><a href="TicTacToeInJava.aspx">TicTacToe in java</a></li>
+            <li><a href="Leaderboards.aspx">Best ever Trivia record</a></li>
+            <li>my other projects: (unfinshed, direct links)</li>
+            <li><a href="https://github.com/ArielBaron/leetcodeAnswers" target="_blank">LeetCode answers</a></li>
+            <li><a href="https://github.com/ArielBaron/chess.com-with-keyboard" target="_blank">Chess.com keyboard script</a></li>
+            <li><a href="https://github.com/ArielBaron/MarketPlace" target="_blank">MarketPlace (low qualty code)</a></li>
+        </ul>
+            
+        <div id="mainContent">
+            <asp:ContentPlaceHolder ID="pageContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ariel Baron. All Rights Reserved.</p>
+    </footer>   
+
+
+</body>
+</html>
+

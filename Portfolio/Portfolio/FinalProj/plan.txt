@@ -1,0 +1,12 @@
+﻿open Pages:
+Home, About, all of the projects
+
+must login Pages:
+Trivia, Contact, Logout, addItem
+
+must not login Pages:
+login, register,
+
+admin Pages:
+ProjectsTable, Admin
+
